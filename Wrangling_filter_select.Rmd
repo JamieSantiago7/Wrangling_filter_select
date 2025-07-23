@@ -207,12 +207,16 @@ movies %>%
   nrow()
 ```
 
+1248 movies were released in 1995.
+
 2. Which Comedies with an MPAA rating, over 120 minutes have a rating above 8?
 
 ```{r}
 movies %>%
   filter(Comedy == 1, !is.na(mpaa), length > 120, rating > 8)
 ```
+
+47 movies have a rating above 8.
 
 3. Create a subset of only Harry Potter movies with the title, rating, budget, and votes. Which movies are included in this data? Which is highest rated? Which has the most votes on imdb.com?
 
@@ -231,6 +235,12 @@ hp_movies %>%
 hp_movies %>%
   arrange(desc(votes))
 ```
+The 3 movies featured are: 
+Harry Potter and the Sorcerer's Stone
+Harry Potter and the Chamber of Secrets	
+Harry Potter and the Prisoner of Azkaban
+
+The highest rated is Harry Potter and the Prisoner of Azkaban. The one with the most votes is Harry Potter and the Sorcerer's Stone.
 
 4. What is the highest budget for a movie that is an Animation or Comedy with at least 100 votes?
 
@@ -242,12 +252,24 @@ movies %>%
   head(1)
 ```
 
+Wild Wild West is an Animation or Comedy with at least 100 votes.
+
 5. Is your favorite movie in the dataset? What other questions could you ask or answer using `filter()`, `select()`, and `arrange()`?
 
 ```{r}
-
+movies %>%
+  filter(str_detect(title, "Godfather")) %>%
+  select(title, year, rating, budget, Action) %>%
+  arrange(desc(rating))
 ```
 
+Yes, The Godfather is. Some other questions I can ask using this method are: 
+
+Which R-rated Action movies since 2000 have the highest rating?
+
+What’s the average rating of PG-13 vs R-rated movies?
+
+What are the top 10 longest movies in the dataset?
 
 
 
